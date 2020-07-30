@@ -1,7 +1,8 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, request, url_for
+from flask_pymongo import PyMongo
 
-app = Flask (__name__)
+app = Flask(__name__)
 
 @app.route("/")
 def index():
