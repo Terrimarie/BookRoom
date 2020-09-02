@@ -5,6 +5,7 @@ from os import path
 if os.path.exists("env.py"):
     import env 
 
+
 app = Flask(__name__)
 
 app.config["DB_NAME"] = "book_room"
