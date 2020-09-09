@@ -1,15 +1,15 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
-from os import path
+
 if os.path.exists("env.py"):
-    import env 
+    import env
 
 
 app = Flask(__name__)
 
 app.config["DB_NAME"] = "book_room"
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["MONGO_URI"] = os.environ["MONGO_URI"]
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
@@ -18,7 +18,10 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_books")
 def get_books():
-    return render_template("books.html", books=mongo.db.books.find())
+    return render_template(
+        "books.html",
+        books=mongo.db.books.find(),
+    )
 
 
 @app.route("/index")
@@ -42,7 +45,8 @@ def login():
 
 
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP", '0.0.0.0'),
-            port=int(os.environ.get("PORT", '5000')),
-            debug=True)
-            
+    app.run(
+        host=os.environ.get("IP", "0.0.0.0"),
+        port=int(os.environ.get("PORT", "5000")),
+        debug=True,
+    )
