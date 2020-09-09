@@ -4,11 +4,11 @@
   {% for book in books %}
   <div class="form-label-group">
     <span>{{book.book_name}}</span>
-    <label for="inputEmail">Book Name</label>
+    <label for="inputBook"></label>
   </div>
-  <div>{{book.book_category_name}}</div>
-  <div>{{book.book_description}}</div>
   <div>{{book.book_author}}</div>
+  <div>{{book.book_rating}}</div>
+  <div>{{book.book_publication_date}}</div>
   
   {% endfor %}
 

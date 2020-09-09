@@ -2,8 +2,8 @@ import pymongo
 import os
 
 MONGODB_URI = os.getenv("MONGO_URI")
-DBS_NAME = "myBookRoom"
-COLLECTION_NAME = "bookRoom"
+DBS_NAME = "book_room"
+COLLECTION_NAME = "books"
 
 def mongo_connect(url):
     try:
