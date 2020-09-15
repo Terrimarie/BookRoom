@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Material Icons fonts -->
+    <!-- Material design icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/shop-homepage.css') }}">
+    <!-- Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Book Room</title>
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/ece63bedce.js" crossorigin="anonymous"></script>
@@ -28,7 +27,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('browse') }}">Browse</a>
+            <a class="nav-link" href="{{ url_for('books') }}">Books</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('register') }}">Register</a>
@@ -56,17 +55,15 @@
     <!-- /.container -->
   </footer>
 
-  <!-- JavaScript/Jquery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
-  <!-- Bootstrap -->
-  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-    M.updateTextFields();
-  });
-  </script>
+<!-- JavaScript/Jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!-- jQuery collapsible accordion -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.collapsible').collapsible();
+    });
+</script>
 
 </body>
 </html>

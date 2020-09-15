@@ -1,17 +1,11 @@
-{% extends 'base.html' %} {% block content %}
-
-<div class="container">
-  {% for book in books %}
-  <div class="form-label-group">
-    <span>{{book.book_name}}</span>
-    <label for="inputBook"></label>
-  </div>
-  <div>{{book.book_author}}</div>
-  <div>{{book.book_rating}}</div>
-  <div>{{book.book_publication_date}}</div>
-  
-  {% endfor %}
-
-</div>
+{% extends 'base.html' %}
+{% block content %}
+    
+        {% for book in books %}
+            {{book.title}}
+            {{book.authors}}
+            {{book.average_rating}}
+            {{book.publication_date}}
+        {% endfor %}
 
 {% endblock %}

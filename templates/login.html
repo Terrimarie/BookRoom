@@ -2,10 +2,10 @@
 {% block content %}
 
         {% for book in books %}
-            {{book.book_name}}
-            {{book.category_name}}
-            {{book.book_description}}
-            {{book.book_author}}
+            {{book.title}}
+            {{book.book_authors}}
+            {{book.average_rating}}
+            {{book.publication_date}}
         {% endfor %}
 <div class="container-fluid">
   <div class="row no-gutter">
