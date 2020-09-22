@@ -128,14 +128,14 @@ None
 
 ## Deployment
 * The code is hosted by master branch in GitHub
-* Deployed the project using hosting platform GitHub pages.
+* Deployed the project using Heroku.
 * Running the code using GitPod.
 * Used the GitPod to run and debug my code within the workspace.
 * Used console in GitPod to write code and use terminal and Git commands to send code to GitHub repository to save code.
 * Used Git to save code and view changes made.
 * Used GitHub repository to save code.
 * Adding to the repository
-git add --all
+git add -Acknowledgements
 git commit -m "initial commit"
 git push
 
