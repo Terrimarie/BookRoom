@@ -51,7 +51,7 @@ def register():
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
-        flash("Registration Successful!")
+        flash("You're registered!")
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
@@ -69,7 +69,7 @@ def login():
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
-                    flash("Welcome, {}".format(
+                    flash("Hello, {}".format(
                         request.form.get("username")))
                     return redirect(url_for(
                         "profile", username=session["user"]))
@@ -100,7 +100,7 @@ def profile(username):
 @app.route("/logout")
 def logout():
     # remove user from session cookies
-    flash("You have been logged out")
+    flash("Logged out")
     session.pop("user")
     return redirect(url_for("login"))
 
@@ -118,7 +118,7 @@ def add_book():
             "created_by": session["user"]
         }
         mongo.db.books.insert_one(book)
-        flash("Book Successfully Added")
+        flash("Book Added")
         return redirect(url_for("get_books"))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
@@ -138,7 +138,7 @@ def edit_book(book_id):
             "created_by": session["user"]
         }
         mongo.db.books.update({"_id": ObjectId(book_id)}, submit)
-        flash("Book Successfully Updated")
+        flash("Book Updated")
     
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
@@ -148,7 +148,7 @@ def edit_book(book_id):
 @app.route("/delete_book/<book_id>")
 def delete_book(book_id):
     mongo.db.books.remove({"_id": ObjectId(book_id)})
-    flash("Book Successfully Deleted")
+    flash("Book Deleted")
     return redirect(url_for("get_books"))
 
 
@@ -165,7 +165,7 @@ def add_category():
             "category_name": request.form.get("category_name")
         }
         mongo.db.categories.insert_one(category)
-        flash("New Category Added")
+        flash("Category Added")
         return redirect(url_for("get_categories"))
 
     return render_template("add_category.html")
@@ -178,7 +178,7 @@ def edit_category(category_id):
             "category_name": request.form.get("category_name")
         }
         mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
-        flash("Category Succesfully Updated")
+        flash("Category Updated")
         return redirect(url_for("get_categories"))
 
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
@@ -188,7 +188,7 @@ def edit_category(category_id):
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("Category Successfully Deleted")
+    flash("Category Deleted")
     return redirect(url_for("get_categories"))
 
 

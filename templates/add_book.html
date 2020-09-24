@@ -1,14 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="light-blue-text text-darken-4 center-align">Add Book</h3>
+    <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2"><i class="fas fa-book-open"></i>Add Book</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">Add a book here</h5>
+        </div>
+        <br><br>
+    </div>
 
     <div class="row card-panel grey lighten-5">
         <form class="col s12" method="POST" action="{{ url_for('add_book') }}">
             <!-- category selection -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-book-open prefix light-blue-text text-darken-4"></i>
+                    <i class="fas fa-book-open prefix black-text"></i>
                     <select id="category-name" name="category-name" class="validate" required>
                         <option value="" disabled selected>Choose Genre</option>
                         {% for category in categories %}
@@ -21,7 +28,7 @@
             <!-- task name -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-file-signature prefix light-blue-text text-darken-4"></i>
+                    <i class="fas fa-file-signature prefix black-text"></i>
                     <input id="title" name="title" minlength="5" maxlength="50" 
                         type="text" class="validate" required>
                     <label for="title">Book Title</label>
@@ -30,7 +37,7 @@
             <!-- task description -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-user-edit prefix light-blue-text text-darken-4"></i>
+                    <i class="fas fa-user-edit prefix black-text"></i>
                     <textarea id="authors" name="authors" minlength="5"
                     maxlength="200" class="materialize-textarea validate" required></textarea>
                     <label for="authors">Book Author</label>
@@ -39,7 +46,7 @@
             <!-- due date picker -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-calendar-day prefix light-blue-text text-darken-4"></i>
+                    <i class="fas fa-calendar-day prefix black-text"></i>
                     <input id="due_date" name="due_date" 
                         type="text" class="datepicker validate" required>
                     <label for="due_date">Due Date</label>
@@ -49,7 +56,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <div class="switch">
-                        <i class="fas fa-exclamation-circle prefix light-blue-text text-darken-4"></i>
+                        <i class="fas fa-exclamation-circle prefix black-text"></i>
                         <label for="is_urgent">
                             <input type="checkbox" id="is_urgent" name="is_urgent">
                             <span class="lever"></span>
