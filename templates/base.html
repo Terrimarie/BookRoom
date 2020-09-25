@@ -18,7 +18,7 @@
         <!-- top navbar -->
         <nav class="nav-extended text-shadow cyan darken-3">
             <div class="nav-wrapper">
-            <a href="{{ url_for('get_books') }}" class="brand-logo"><i class="fas fa-book-open"></i>Book Room</a>
+            <a href="{{ url_for('get_books') }}" class="brand-logo center"><i class="fas fa-book-open"></i>Book Room</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('get_books') }}">Books</a></li>
@@ -75,10 +75,31 @@
     </main>
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="page-footer teal">
     <div class="container">
-      <p class="m-0 text-center center-align">Copyright &copy; Terri Grierson Website 2020</p>
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Book Room Bio</h5>
+          <p class="grey-text text-lighten-4">Book Room is here for you to enjoy different books. We have a passion for books and created this website so that you can keep track of your books and when they are due back to the library. Please enjoy and tell your friends about this website.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Page Links</h5>
+          <ul>
+            <li><a class="white-text" href="{{ url_for('get_books') }}">Books</a></li>
+            <li><a class="white-text" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+            <li><a class="white-text" href="{{ url_for('add_book') }}">Add Book</a></li>
+            <li><a class="white-text" href="{{ url_for('logout') }}">Log Out</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
+    <div class="footer-copyright">
+            <div class="container">
+            © 2020 Copyright Terri Grierson
+            </div>
+          </div>
     <!-- /.container -->
   </footer>
 
