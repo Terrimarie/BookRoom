@@ -78,17 +78,13 @@
                     {% endif %}
                 </div>
                 <div class="col s9">
-                    <strong>{{ book.title }}</strong> : {{ book.authors }} 
-                    {% if book.is_urgent == "on" %}    
-                        <i class="fas fa-exclamation-circle light-blue-text text-lighten-2 tooltipped"
-                            data-position="right" data-tooltip="URGENT!"></i>
-                    {% endif %}
-                </div>
+                    <strong>{{ book.title }}</strong><em>Author: {{ book.authors }} 
+                </em></div>
             </div>
             <div class="collapsible-body">
-                <strong>{{ book.book_description }}</strong>
-                <p>{{ book.average_rating }}</p>
-                <p>{{ book.genre }}</p>
+                <strong><em>Book description: {{ book.book_description }}</em></strong>
+                <p><em>Book rating: {{ book.average_rating }}</em></p>
+                <p><em>Genre: {{ book.genre }}</em></p>
                 <p><em>by: {{ book.created_by }}</em></p>
             </div>
         </li>
