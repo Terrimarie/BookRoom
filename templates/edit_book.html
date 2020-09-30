@@ -12,9 +12,9 @@
             <!-- category selection -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-folder-open prefix black-text"></i>
+                    <i class="fas fa-book-open prefix black-text"></i>
                     <select id="category-name" name="category-name" class="validate" required>
-                        <option value="" disabled>Choose Category</option>
+                        <option value="" disabled>Choose Genre</option>
                         {% for category in categories %}
                             {% if category.catergory_name == book.category_name %}
                                 <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
@@ -23,54 +23,42 @@
                             {% endif %}
                         {% endfor %}
                     </select>
-                    <label for="category-name">Book Category</label>
+                    <label for="category-name">Book Genre</label>
                 </div>
             </div>
-            <!-- task name -->
+            <!-- book name -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-pencil-alt prefix black-text"></i>
+                    <i class="fas fa-file-signature prefix black-text"></i>
                     <input id="title" name="title" minlength="5" maxlength="50" 
-                        value="{{ book.book_title }}" type="text" class="validate" required>
+                        type="text" class="validate" required>
                     <label for="title">Book Title</label>
                 </div>
             </div>
-            <!-- task description -->
+            <!-- book author -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-align-left prefix black-text"></i>
+                    <i class="fas fa-user-edit prefix black-text"></i>
                     <textarea id="authors" name="authors" minlength="5"
-                        maxlength="200" class="materialize-textarea validate" required>
-                        {{- book.book_author -}}
-                    </textarea>
+                    maxlength="200" class="materialize-textarea validate" required></textarea>
                     <label for="authors">Book Author</label>
                 </div>
             </div>
-            <!-- due date picker -->
+            <!-- book description -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-calendar-alt prefix black-text"></i>
-                    <input id="due_date" name="due_date" 
-                        type="text" 
-                        value="{{ book.due_date }}" class="datepicker validate" required>
-                    <label for="due_date">Due Date</label>
+                    <i class="fas fa-pencil-alt prefix black-text"></i>
+                    <textarea id="book_description" name="book_description" minlength="5" maxlength="200" class="materialize-textarea validate" required></textarea>
+                    <label for="book_description">Book Description</label>
                 </div>
             </div>
-            <!-- is urgent toggle -->
+            <!-- average rating -->
             <div class="row">
                 <div class="input-field col s12">
-                    <div class="switch">
-                        <i class="fas fa-exclamation-circle prefix black-text"></i>
-                        <label for="is_urgent">
-                            {% if book.is_urgent == "on" %}
-                                <input type="checkbox" id="is_urgent" name="is_urgent" checked>
-                            {% else %}
-                                <input type="checkbox" id="is_urgent" name="is_urgent">
-                            {% endif %}
-                            <span class="lever"></span>
-                            Is Urgent
-                        </label>
-                    </div>
+                    <i class="fas fa-star prefix black-text"></i>
+                    <input id="average_rating" name="average_rating" minlength="5" maxlength="50" 
+                        type="text" class="validate" required>
+                    <label for="average_rating">Average Rating</label>
                 </div>
             </div>
             <!-- Submit button -->
