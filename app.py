@@ -110,8 +110,7 @@ def add_book():
     if request.method == "POST":
         is_urgent = "on" if request.form.get("is_urgent") else "off"
         book = {
-            "category_name": request.form.get("category_name"),
-            "title": request.form.get("title"),
+            "category_name": request.form.get("category_name"),"title": request.form.get("title"),
             "authors": request.form.get("authors"),
             "is_urgent": is_urgent,
             "due_date": request.form.get("due_date"),
