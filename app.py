@@ -1,6 +1,6 @@
 import os
 from flask import (
-    Flask, flash, render_template, 
+    Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -87,19 +87,18 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    # grab the session user's username for db
+    # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"]:
         return render_template("profile.html", username=username)
-
         return redirect(url_for("login"))
 
 
 @app.route("/logout")
 def logout():
-    # remove user from session cookies
+    # remove user from session cookie
     flash("Logged out")
     session.pop("user")
     return redirect(url_for("login"))
@@ -110,10 +109,11 @@ def add_book():
     if request.method == "POST":
         is_urgent = "on" if request.form.get("is_urgent") else "off"
         book = {
-            "category_name": request.form.get("category_name"),"title": request.form.get("title"),
+            "category_name": request.form.get("category_name"),
+            "title": request.form.get("title"),
             "authors": request.form.get("authors"),
-            "is_urgent": is_urgent,
-            "due_date": request.form.get("due_date"),
+            "book_description": request.form.get("book_description"),
+            "average_rating": request.form.get("average_rating"),
             "created_by": session["user"]
         }
         mongo.db.books.insert_one(book)
@@ -132,8 +132,8 @@ def edit_book(book_id):
             "category_name": request.form.get("category_name"),
             "title": request.form.get("title"),
             "authors": request.form.get("authors"),
-            "is_urgent": is_urgent,
-            "due_date": request.form.get("due_date"),
+            "book_description": request.form.get("book_description"),
+            "average_rating": request.form.get("average_rating"),
             "created_by": session["user"]
         }
         mongo.db.books.update({"_id": ObjectId(book_id)}, submit)
@@ -146,6 +146,10 @@ def edit_book(book_id):
 
 @app.route("/delete_book/<book_id>")
 def delete_book(book_id):
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    if request.method == "GET":
+        return render_template("delete_confirmaton.html", book=book)
+        
     mongo.db.books.remove({"_id": ObjectId(book_id)})
     flash("Book Deleted")
     return redirect(url_for("get_books"))

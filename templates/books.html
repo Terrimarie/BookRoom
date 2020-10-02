@@ -69,7 +69,7 @@
     <ul class="collapsible">
          {% for book in books %}
         <li>
-            <div class="collapsible-header white-text light-blue darken-3">
+            <div class="collapsible-header white-text light-blue darken-3 text-shadow">
                 <div class="col s3">
                     <i class="fas fa-caret-down"></i>
                     {% if session.user|lower == book.created_by|lower %}
@@ -78,11 +78,11 @@
                     {% endif %}
                 </div>
                 <div class="col s9">
-                    <strong>{{ book.title }}</strong><em>Author: {{ book.authors }} 
-                </em></div>
+                    <strong>{{ book.title }}</strong><em>Author: {{ book.authors }}</em>
+                </div>
             </div>
             <div class="collapsible-body">
-                <strong><em>Book description: {{ book.book_description }}</em></strong>
+                <strong><em>Description: {{ book.book_description }}</em></strong>
                 <p><em>Book rating: {{ book.average_rating }}</em></p>
                 <p><em>Genre: {{ book.genre }}</em></p>
                 <p><em>by: {{ book.created_by }}</em></p>

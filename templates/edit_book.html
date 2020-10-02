@@ -1,79 +1,128 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
-    <div class="container">
-        <br><br>
-        <h1 class="header center teal-text text-lighten-2"><i class="fas fa-book-open"></i>Edit Book</h1>
-        <br><br>
+<div class="container">
+  <br /><br />
+  <h1 class="header center teal-text text-lighten-2">
+    <i class="fas fa-book-open"></i>Edit Book
+  </h1>
+  <br /><br />
+</div>
+
+<div class="row card-panel grey lighten-5">
+  <form
+    class="col s12"
+    method="POST"
+    action="{{ url_for('edit_book', book_id=book._id) }}"
+  >
+    <!-- category selection -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-book-open prefix black-text"></i>
+        <select
+          id="category-name"
+          name="category-name"
+          class="validate"
+          required
+        >
+          <option value="" disabled>Choose Genre</option>
+          {% for category in categories %} {% if category.catergory_name ==
+          book.category_name %}
+          <option value="{{ category.category_name }}" selected
+            >{{ category.category_name }}</option
+          >
+          {% else %}
+          <option value="{{ category.category_name }}"
+            >{{ category.category_name }}</option
+          >
+          {% endif %} {% endfor %}
+        </select>
+        <label for="category-name">Book Genre</label>
+      </div>
     </div>
-
-    <div class="row card-panel grey lighten-5">
-        <form class="col s12" method="POST" action="{{ url_for('edit_book', book_id=book._id) }}">
-            <!-- category selection -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-book-open prefix black-text"></i>
-                    <select id="category-name" name="category-name" class="validate" required>
-                        <option value="" disabled>Choose Genre</option>
-                        {% for category in categories %}
-                            {% if category.catergory_name == book.category_name %}
-                                <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
-                            {% else %}
-                                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                    <label for="category-name">Book Genre</label>
-                </div>
-            </div>
-            <!-- book name -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-file-signature prefix black-text"></i>
-                    <input id="title" name="title" minlength="5" maxlength="50" 
-                        type="text" class="validate" required>
-                    <label for="title">Book Title</label>
-                </div>
-            </div>
-            <!-- book author -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-user-edit prefix black-text"></i>
-                    <textarea id="authors" name="authors" minlength="5"
-                    maxlength="200" class="materialize-textarea validate" required></textarea>
-                    <label for="authors">Book Author</label>
-                </div>
-            </div>
-            <!-- book description -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-pencil-alt prefix black-text"></i>
-                    <textarea id="book_description" name="book_description" minlength="5" maxlength="200" class="materialize-textarea validate" required></textarea>
-                    <label for="book_description">Book Description</label>
-                </div>
-            </div>
-            <!-- average rating -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-star prefix black-text"></i>
-                    <input id="average_rating" name="average_rating" minlength="5" maxlength="50" 
-                        type="text" class="validate" required>
-                    <label for="average_rating">Average Rating</label>
-                </div>
-            </div>
-            <!-- Submit button -->
-            <div class="row">
-                <div class="col s12 center-align">
-                    <!-- cancel button -->
-                    <a href="{{ url_for('get_books') }}" class="btn-large red darken-3 btn text-shadow">
-                        Cancel <i class="fas fa-times-circle-right"></i>
-                    </a>
-                    <button type="submit" class="btn-large light-cyan darken-1 text-shadow">
-                        Edit Book <i class="fas fa-edit right"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-  </div>
+    <!-- book name -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-file-signature prefix black-text"></i>
+        <input
+          id="title"
+          name="title"
+          minlength="5"
+          maxlength="50"
+          type="text"
+          class="validate"
+          value="{{book.title}}"
+          required
+        />
+        <label for="title">Book Title</label>
+      </div>
+    </div>
+    <!-- book author -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-user-edit prefix black-text"></i>
+        <textarea
+          id="authors"
+          name="authors"
+          minlength="5"
+          maxlength="200"
+          class="materialize-textarea validate"
+          required
+        >
+{{book.authors}}</textarea
+        >
+        <label for="authors">Book Author</label>
+      </div>
+    </div>
+    <!-- book description -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-pencil-alt prefix black-text"></i>
+        <textarea
+          id="book_description"
+          name="book_description"
+          minlength="5"
+          maxlength="200"
+          class="materialize-textarea validate"
+          required
+        >
+{{book.book_description}}</textarea
+        >
+        <label for="book_description">Book Description</label>
+      </div>
+    </div>
+    <!-- average rating -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-star prefix black-text"></i>
+        <input
+          id="average_rating"
+          name="average_rating"
+          minlength="5"
+          maxlength="50"
+          type="text"
+          class="validate"
+          value="{{book.average_rating}}"
+          required
+        />
+        <label for="average_rating">Average Rating</label>
+      </div>
+    </div>
+    <!-- Submit button -->
+    <div class="row">
+      <div class="col s12 center-align">
+        <!-- cancel button -->
+        <a
+          href="{{ url_for('get_books') }}"
+          class="btn-large red darken-3 btn text-shadow"
+        >
+          Cancel <i class="fas fa-times-circle-right"></i>
+        </a>
+        <button type="submit" class="btn-large light-cyan darken-1 text-shadow">
+          Edit Book <i class="fas fa-edit right"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
 
 {% endblock %}

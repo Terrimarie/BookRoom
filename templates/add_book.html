@@ -15,20 +15,20 @@
             <!-- genre selection -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-book-open prefix black-text"></i>
-                    <select id="category-name" name="category-name" class="validate" required>
-                        <option value="" disabled selected>Choose Genre</option>
-                        {% for category in categories %}
+                    <i class="fas fa-book-open prefix"></i>
+                        <select id="category-name" name="category-name" class="validate" required>
+                            <option value="" disabled selected>Choose Genre</option>
+                            {% for category in categories %}
                             <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-                        {% endfor %}
-                    </select>
+                            {% endfor %}
+                        </select>
                     <label for="category-name">Book Genre</label>
                 </div>
             </div>
             <!-- book name -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-file-signature prefix black-text"></i>
+                    <i class="fas fa-file-signature prefix"></i>
                     <input id="title" name="title" minlength="5" maxlength="50" 
                         type="text" class="validate" required>
                     <label for="title">Book Title</label>
@@ -37,7 +37,7 @@
             <!-- book author -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-user-edit prefix black-text"></i>
+                    <i class="fas fa-user-edit prefix"></i>
                     <textarea id="authors" name="authors" minlength="5"
                     maxlength="200" class="materialize-textarea validate" required></textarea>
                     <label for="authors">Book Author</label>
@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-star prefix black-text"></i>
-                    <input id="average_rating" name="average_rating" minlength="5" maxlength="50" 
+                    <input id="average_rating" name="average_rating" minlength="1" maxlength="4" 
                         type="text" class="validate" required>
                     <label for="average_rating">Average Rating</label>
                 </div>
