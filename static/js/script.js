@@ -1,3 +1,4 @@
+// Taken from Tim Nelsons videos 
 $(document).ready(function () {
   $(".sidenav").sidenav({ edge: "right" });
   $(".collapsible").collapsible();

@@ -46,9 +46,10 @@
             <p>Enjoy all the features of the website. Happy reading!</p>
     </div>
     <br><br>  
-
+    <!-- Taken from Tim Nelsons videos -->
     <div class="row card-panel grey lighten-5">
         <form action="{{ url_for('search') }}" method="post" class="col s12">
+        <!-- Ends here -->
             <div class="row valign-wrapper left-align">
                 <div class="input-field col s12 m8">
                     <i class="fas fa-search prefix black-text"></i>
@@ -58,12 +59,14 @@
                 <div class="col s12 m4">
                     <a href="{{ url_for('get_books') }}" class="cyan darken-3 btn text-shadow">Reset</a>
                     <button type="submit" class="light-cyan darken-1 btn text-shadow">
+                    <!-- Taken from Tim Nelsons videos -->
                         <i class="fas fa-search left"></i> Search
                     </button>
                 </div>
             </div>
         </form>
     </div>
+    <!-- Ends here -->
     
     {% if books|length > 0 %}
     <ul class="collapsible">

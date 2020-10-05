@@ -9,8 +9,9 @@
         </div>
         <br><br>
     </div>
-
+    <!-- Taken from Tim Nelsons videos -->
     <div class="row card-panel grey lighten-5">
+    <!-- Ends here -->
         <form class="col s12" method="POST" action="{{ url_for('add_book') }}">
             <!-- genre selection -->
             <div class="row">
@@ -19,15 +20,19 @@
                         <select id="category-name" name="category-name" class="validate" required>
                             <option value="" disabled selected>Choose Genre</option>
                             {% for category in categories %}
+                            <!-- Taken from Tim Nelsons videos -->
                             <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                            <!-- Ends here -->
                             {% endfor %}
                         </select>
                     <label for="category-name">Book Genre</label>
                 </div>
             </div>
             <!-- book name -->
+            <!-- Taken from Tim Nelsons videos -->
             <div class="row">
                 <div class="input-field col s12">
+                <!-- Ends here -->
                     <i class="fas fa-file-signature prefix"></i>
                     <input id="title" name="title" minlength="5" maxlength="50" 
                         type="text" class="validate" required>
@@ -35,8 +40,10 @@
                 </div>
             </div>
             <!-- book author -->
+            <!-- Taken from Tim Nelsons videos -->
             <div class="row">
                 <div class="input-field col s12">
+                <!-- Ends here -->
                     <i class="fas fa-user-edit prefix"></i>
                     <textarea id="authors" name="authors" minlength="5"
                     maxlength="200" class="materialize-textarea validate" required></textarea>
@@ -44,8 +51,10 @@
                 </div>
             </div>
             <!-- book description -->
+            <!-- Taken from Tim Nelsons videos -->
             <div class="row">
                 <div class="input-field col s12">
+                <!-- Ends here -->
                     <i class="fas fa-pencil-alt prefix black-text"></i>
                     <textarea id="book_description" name="book_description" minlength="5" maxlength="200" class="materialize-textarea validate" required></textarea>
                     <label for="book_description">Book Description</label>
@@ -61,8 +70,10 @@
                 </div>
             </div>
             <!-- Submit button -->
+            <!-- Taken from Tim Nelsons videos -->
             <div class="row">
                 <div class="col s12 center-align">
+                <!-- Ends here -->
                     <button type="submit" class="btn-large light-cyan darken-1 text-shadow">
                         Add Book <i class="fas fa-plus-square right"></i>
                     </button>

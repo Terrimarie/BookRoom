@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" type="text/css"/>
+    <!-- Taken from Tim Nelsons videos -->
     <!-- Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
+    <!-- Ends here -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css">
     {% block styles %}
     {% endblock %}
@@ -36,43 +38,50 @@
             </ul>
             </div>
         </nav>
-
+        
         <!-- mobile sidenav -->
         <ul class="sidenav" id="mobile-demo">
             <li><h4 class="center-align.light-green-text.text-darken-4">Book Room</h4></li>
             <li><a href="{{ url_for('get_books') }}">Books</a></li>
+            <!-- Taken from Tim Nelsons videos -->
             {% if session.user %}
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                <!-- Ends here -->
                 <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
                 {% if session.user|lower == "admin"|lower %}
-                    <li><a href="{{ url_for('get_categories') }}">Manage Genres</a></li>
+                    <li><a href="{{ url_for('get_categories') }}">Manage Genres</a></li>                    
+                <!-- Taken from Tim Nelsons videos -->
                 {% endif %}
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
                 <li><a href="{{ url_for('login') }}">Log In</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
+            <!-- Ends here -->
         </ul>
 
     </header>
-
+    <!-- Taken from Tim Nelsons videos -->
     <section>
         <!-- flash messages -->
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
                     <div class="row flashes">
+                    <!-- Ends here -->
                         <h4 class="light-green lighten-4 center-align">{{ message }}</h4>
                     </div>
                 {% endfor %}
             {% endif %}
         {% endwith %}
     </section>
+    <!-- Taken from Tim Nelsons videos -->
     <!-- Delete flash message/Ends here -->
     <main class="container">
         {% block content %}
         {% endblock %}
     </main>
+    <!-- Ends here -->
 
   <!-- Footer -->
   <footer class="page-footer teal">

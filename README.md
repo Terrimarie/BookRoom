@@ -1,5 +1,5 @@
 # Book Room Website
-This is a website for people who want to search, store, create, edit, delete book records and mark them as urgent to return to the library. They can search for books, add books, edit books, delete books and mark books as urgently need to be taken back to the library. Admins can create Genre's and search through books using key words form the titles, the authors names or the genre's.
+This is a website for people who want to search, add, store, edit, delete book records. They can search for books, add books, edit books, delete books. Admins can also create and delete genre's. Each user can only delete books added by that user.
 
 ## UX
 The book page the book room website is white and simple for the the user to use. There is a simple search bar they can use as a user or an admin user, with a search and reset button. Along with a simple navigation bar leading you to the books, profile page, add book, manage categories and log out as an admin or as a user the books, profile page, add book and log out page. The book room once clicked brings you back to the book page. 
@@ -59,6 +59,7 @@ This website is for individuals who love reading, they want to keep a record of 
 **Add book feature** - Allow the user to add the books name, author, due date, mark as urgent and select the add book button.
 
 ## Features Left to Implement
+I started a delete_confirmation page so that the user would get a message saying are you sure you want to delete? This is a future feature too be finished.
 
 ## Technologies 
 
@@ -133,14 +134,14 @@ None
 * Used the GitPod to run and debug my code within the workspace.
 * Used console in GitPod to write code and use terminal and Git commands to send code to GitHub repository to save code.
 * Used Git to save code and view changes made.
-* Used GitHub repository to save code.
+* Used GitHub & Heroku repository to save code.
 * Adding to the repository
 git add -Acknowledgements
 git commit -m "initial commit"
 git push
 
 ## Credits
-
-## Media
+Inspired by Tim Nelson for his mini-project videos.
 
 ## Acknowledgements
+Inspired by Tim Nelson for his mini-project videos.

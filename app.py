@@ -24,14 +24,15 @@ def get_books():
     books = list(mongo.db.books.find())
     return render_template("books.html", books=books)
 
-
+# Taken from Tim Nelsons video
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
+    # Ends here
     books = list(mongo.db.books.find({"$text": {"$search": query}}))
     return render_template("books.html", books=books)
 
-
+# Taken from Tim Nelsons video
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -51,7 +52,9 @@ def register():
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
+        # Ends here
         flash("You're registered!")
+        # Taken from Tim Nelsons video
         return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
@@ -67,12 +70,14 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
+                # Ends here
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     flash("Hello, {}".format(
                         request.form.get("username")))
                     return redirect(url_for(
                         "profile", username=session["user"]))
+            # Taken from Tim Nelsons video
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -99,6 +104,7 @@ def profile(username):
 @app.route("/logout")
 def logout():
     # remove user from session cookie
+    # Ends here
     flash("Logged out")
     session.pop("user")
     return redirect(url_for("login"))
@@ -126,10 +132,12 @@ def add_book():
 
 @app.route("/edit_book/<book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
+    # Taken from Tim Nelsons video
     if request.method == "POST":
         is_urgent = "on" if request.form.get("is_urgent") else "off"
         submit = {
             "category_name": request.form.get("category_name"),
+            # Ends here
             "title": request.form.get("title"),
             "authors": request.form.get("authors"),
             "book_description": request.form.get("book_description"),
@@ -150,7 +158,7 @@ def delete_book(book_id):
     flash("Book Deleted")
     return redirect(url_for("get_books"))
 
-
+# Taken from Tim Nelsons video
 @app.route("/get_categories")
 def get_categories():
     categories = list(mongo.db.categories.find().sort("category_name", 1))
@@ -164,12 +172,13 @@ def add_category():
             "category_name": request.form.get("category_name")
         }
         mongo.db.categories.insert_one(category)
+        # Ends here
         flash("Genre Added")
         return redirect(url_for("get_categories"))
 
     return render_template("add_category.html")
 
-
+# Taken from Tim Nelsons video
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
 def edit_category(category_id):
     if request.method == "POST":
@@ -177,9 +186,10 @@ def edit_category(category_id):
             "category_name": request.form.get("category_name")
         }
         mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+        # Ends here
         flash("Genre Updated")
         return redirect(url_for("get_categories"))
-
+    # Taken from Tim Nelsons video
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
 
@@ -187,6 +197,7 @@ def edit_category(category_id):
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
+    # Ends here
     flash("Genre Deleted")
     return redirect(url_for("get_categories"))
 

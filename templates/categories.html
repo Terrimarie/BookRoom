@@ -14,7 +14,7 @@
             </a>
         </div>
     </div>
-
+<!--Work taken Tim Nelsons videos -->
     <div class="row">
         {% for category in categories %}
             <div class="col s12 m3">
@@ -22,6 +22,7 @@
                     <div class="card-content white-text">
                         <span class="card-title">{{ category.category_name }}</span>
                     </div>
+                    <!-- Ends here -->
                     <div class="card-action">
                         <a href="{{ url_for('edit_category', category_id=category._id) }}" class="btn cyan accent-4">Edit</a>
                         <a href="{{ url_for('delete_category', category_id=category._id) }}" class="btn red darken-3">Delete</a>
