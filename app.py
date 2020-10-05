@@ -146,10 +146,6 @@ def edit_book(book_id):
 
 @app.route("/delete_book/<book_id>")
 def delete_book(book_id):
-    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-    if request.method == "GET":
-        return render_template("delete_confirmaton.html", book=book)
-        
     mongo.db.books.remove({"_id": ObjectId(book_id)})
     flash("Book Deleted")
     return redirect(url_for("get_books"))
@@ -168,7 +164,7 @@ def add_category():
             "category_name": request.form.get("category_name")
         }
         mongo.db.categories.insert_one(category)
-        flash("Category Added")
+        flash("Genre Added")
         return redirect(url_for("get_categories"))
 
     return render_template("add_category.html")
@@ -181,7 +177,7 @@ def edit_category(category_id):
             "category_name": request.form.get("category_name")
         }
         mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
-        flash("Category Updated")
+        flash("Genre Updated")
         return redirect(url_for("get_categories"))
 
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
@@ -191,7 +187,7 @@ def edit_category(category_id):
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("Category Deleted")
+    flash("Genre Deleted")
     return redirect(url_for("get_categories"))
 
 
